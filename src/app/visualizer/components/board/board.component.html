@@ -1,0 +1,65 @@
+<div class="bar" id="nav-bar">
+    <div (click)="generateStructures()" class="btn board-btn">Generate Walls</div>
+    <div (click)="toggleAlgoritmsList()" class="btn board-btn alorithm-list-btn">{{algorithms[activeAlgorithm]}}
+        <div class="algorithm-list" *ngIf="algorithmsListShowed">
+            <div class="algorithm-list-item"(click)="setActiveAlgorithm(i)" *ngFor="let algorithm of algorithms; index as i">
+                {{algorithm}}
+            </div>          
+        </div>
+    </div>
+    <div (click)="visualize(this.algorithmDelay)" class="btn board-btn" id="run-btn">Run Algorithm</div>
+    <div (click)="clearBoard()" class="btn board-btn">Clear Board</div>
+    <div (click)="clearPath()" class="btn board-btn">Clear Path</div>
+    <div class="checkbox">
+        <input type="checkbox" id="diagonal" name="diagonal" checked (click)="toggleDiagonalEdges()">
+        <label for="diagonal">Diagonal edges</label>
+    </div>
+</div>
+<div class="bar" id="legend-bar">
+    <div class="legend-element">
+        <div class="legend-tile legend-tile-icons">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right-circle" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"/>
+            </svg>
+        </div>
+        Initial Node
+    </div>
+    <div class="legend-element">
+        <div class="legend-tile legend-tile-icons">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-stop-circle" viewBox="0 0 16 16">
+                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                <path d="M11 8a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+            </svg>
+        </div>
+        Destination Node
+    </div>
+    <div class="legend-element"><div class="legend-tile legend-tile-open"></div>Open Node</div>
+    <div class="legend-element"><div class="legend-tile legend-tile-wall"></div>Wall Node</div>
+    <div class="legend-element"><div class="legend-tile legend-tile-checked"></div>Checked Node</div>
+    <div class="legend-element"><div class="legend-tile legend-tile-path"></div>Path Node</div>
+</div>
+
+<table (mouseleave)="onMouseLeave()" (contextmenu)="contextMenuDisable($event)">
+    <tr *ngFor="let row of board.nodes; index as y;">
+        <td *ngFor="let node of row; index as x">
+            <div class="node" [@.disabled]="animationsDisabled" [@nodeType]="node.type"   
+            (mousedown)="onMouseDown($event, node)" (mousemove)="onMouseMove($event, node)" (mouseup)="onMouseUp($event, node)">
+
+            <svg *ngIf="node.x == board.getInitalNode().x && node.y == board.getInitalNode().y" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right-circle" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"/>
+            </svg>
+            <svg *ngIf="node.x == board.getDestinationNode().x && node.y == board.getDestinationNode().y" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-stop-circle" viewBox="0 0 16 16">
+                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                <path d="M11 8a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+            </svg>
+
+            </div>
+        </td>
+    </tr>
+</table>
+
+<div class="bar">
+    Right mouse button - place wall : Left mouse button - clear wall <br>
+    (Blocks cannot be placed nor cleared while the path is calculated) <br>
+    Initial and Destination nodes can be moved using right mouse button
+</div>

@@ -1,0 +1,185 @@
+.bar {
+    margin: auto;
+    padding: 0.5rem 0;
+    max-width: 68rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-flow: row wrap;
+    color: #fff;
+    text-align: center;
+
+    .alorithm-list-btn {
+        position: relative;
+        width: 12rem;
+    }
+
+    .alorithm-list-btn::after {
+        position: absolute;
+        top: 50%;
+        right: 2%;
+        display: inline-block;
+        margin-left: 0.25em;
+        vertical-align: 0.25em;
+        content: "";
+        border-top: .3em solid;
+        border-right: .3em solid transparent;
+        border-bottom: 0;
+        border-left: .3em solid transparent;
+    }
+    
+
+
+    .algorithm-list {
+        position: absolute;
+        display: block;
+        top: 0px;
+        left: 0px;
+        transform: translate3d(0px, 38px, 0px);
+        will-change: transform;
+        width: 12rem;
+        float: left;
+        min-width: 10rem;
+        padding: .6rem 0;
+        margin: .125rem 0 0;
+        font-size: 1rem;
+        color: #b6c3cf;
+        text-align: left;
+        list-style: none;
+        background-color: hsl(211, 100%, 30%);
+        background-clip: padding-box;
+        border: 1px solid rgba(0,0,0,.15);
+        border-radius: .25rem;
+        z-index: 1000;
+    
+        .algorithm-list-item {
+            display: block;
+            width: 100%;
+            padding: .25rem 0.5rem;
+            clear: both;
+            font-weight: 400;
+            color: #b6c3cf;
+            text-align: inherit;
+            white-space: nowrap;
+            background-color: transparent;
+            border: 0;
+        }
+    
+        .algorithm-list-item:hover {
+            color: #b6c3cf;
+            text-decoration: none;
+            background-color: hsl(211, 100%, 25%);
+        }
+    }
+
+    .legend-element {
+        width: 10rem;
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .legend-tile {
+        padding: 0;
+        width: 1.7rem;
+        height: 1.7rem;
+        border: 1px solid rgb(17, 37, 68);
+    }
+    
+    .legend-tile-open {
+        background-color: hsl(222, 37%, 88%);
+    }
+    
+    .legend-tile-wall {
+        background-color: hsl(216, 79%, 19%);
+    }
+        
+    .legend-tile-checked {
+        background-color: hsl(197, 75%, 60%);
+    }
+    
+    .legend-tile-path {
+        background-color: hsl(64, 92%, 63%);
+    }
+
+    .legend-tile-icons {
+        border: none;
+    }
+}
+
+.btn {
+    margin: 0 0.5rem;
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    border: 1px solid transparent;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.btn:hover {
+    cursor: pointer;
+}
+
+.board-btn {
+    color: #fff;
+    background-color: hsl(211, 100%, 50%);
+    border-color: hsl(211, 100%, 50%);
+}
+
+.board-btn:hover {
+    color: #fff;
+    background-color: hsl(211, 100%, 43%);
+    border-color: hsl(211, 100%, 40%);
+}
+
+#run-btn {
+    color: #fff;
+    background-color: hsl(211, 100%, 25%);
+    border-color: hsl(211, 100%, 25%);
+}
+
+#run-btn:hover {
+    color: #fff;
+    background-color: hsl(211, 100%, 15%);
+    border-color: hsl(211, 100%, 18%);
+}
+
+.checkbox {
+    color: #fff;
+}
+
+
+table {
+    border: 2px solid rgb(12, 26, 48);
+    border-collapse: collapse;
+    margin: auto;
+    background-color: hsl(222, 37%, 88%);
+    td {
+        padding: 0;
+        width: 1.7rem;
+        height: 1.7rem;
+        border-collapse: collapse;
+        
+        .node {
+            height: 100%;
+            width: 100%;
+            margin: auto;
+            cursor: pointer;
+            border: 1px solid hsl(218, 67%, 82%);
+        }
+    }
+}
+
+svg{
+    height: 100%;
+    width: auto;
+}
+
+
